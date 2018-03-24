@@ -4,14 +4,5 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved
 
-package 'apache' do
-  package_name 'httpd'
-  action :install
-end
-
-service 'apache' do
- service_name 'httpd'
- action [:start, :enable]
-end
-
+include_recipe 'apache::default'
 include_recipe 'apache::website'
