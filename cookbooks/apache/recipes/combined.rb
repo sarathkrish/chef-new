@@ -4,19 +4,14 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved
 
-if node['platform_family'] == 'rhel' 
-  package = 'httpd'
-else
-  package = 'apache2'
-end
-
 package 'apache' do
-  package_name package
+  package_name 'httpd'
   action :install
 end
 
 service 'apache' do
- service_name package
+ service_name 'httpd'
  action [:start, :enable]
 end
 
+include_recipe 'apache::website'
